@@ -1,0 +1,24 @@
+{
+  "name": "AntiTestportal",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_scripts": [{
+    "matches": [
+      "*://*.teams.microsoft.com/*",
+		  "*://*.testportal.net/*",
+			"*://*.testportal.pl/*"
+    ],
+    "js": ["content.js"] 
+  }], 
+  "web_accessible_resources": ["modules/time.js", "modules/focus.js", "modules/search.js"],
+  "browser_action":{
+		"default_title": "AntiTestportal",
+		"default_popup": "popup/index.html"
+  },
+  "permissions": [
+		"storage"
+  ],
+  "icons": { 
+		"300": "assets/testportal-300.png"
+  }
+}
