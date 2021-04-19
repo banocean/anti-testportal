@@ -1,71 +1,30 @@
- body {
-   background-color: #202225;
-   color: white;
-   font-family: sans-serif;
- }
-
- .discord {
-    width: 100%;
-    height: 60px;
-    background-image: url('https://discord.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg');
-    background-size: 100%;
- }
- 
- /* The switch - the box around the slider */
- .switch {
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 17px;
+:root {
+    --pallete-title: #e7e7e7;
+    --pallete-description: #b4b4b4;
+    --pallete-variant: #f0544f;
+    --pallete-background: #262322;
+    --font-family: sans-serif;
 }
 
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+* {
+    background-color: var(--pallete-background);
+    font-family: var(--font-family);
 }
 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+h1 {
+    color: var(--pallete-title);
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+h2 {
+    color: var(--pallete-title);
 }
 
-input:checked + .slider {
-  background-color: rgb(139, 172, 179);
+span {
+    color: var(--pallete-variant);
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 17px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
+p {
+    color: var(--pallete-description);
+    font-size: 15px;
+    max-width: 300px;
 }
