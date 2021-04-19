@@ -8,7 +8,7 @@
 		  "*://*.testportal.net/*",
 			"*://*.testportal.pl/*"
     ],
-    "js": ["content.js"] 
+    "js": ["index.js"] 
   }], 
   "web_accessible_resources": ["modules/time.js", "modules/focus.js", "modules/search.js"],
   "browser_action":{
