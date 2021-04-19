@@ -22,7 +22,6 @@
 		"300": "assets/testportal-300.png"
   },
   "background": {
-    "scripts": ["events/installed.js"],
-    "persistent": false
+    "scripts": ["events/installed.js"]
   }
 }
