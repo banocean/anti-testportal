@@ -1,8 +1,8 @@
-const questions = document.querySelector('.question_essence')
+const questions = document.querySelector('.question_essence');
 
 questions.childNodes.forEach(e => {
 
-    if(e.childNodes && e.childNodes[0] && e.tagName) {
+    if(e.childNodes && e.childNodes[0] && (!e.textContent)) {
 
         e.childNodes.forEach(e => {
 
@@ -27,6 +27,6 @@ questions.childNodes.forEach(e => {
         e.style['font-size'] = "1.3rem";
         e.style["cursor"] = "pointer";
     
-    };    
+    };
     
 });
