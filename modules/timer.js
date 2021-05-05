@@ -1,1 +1,1 @@
-setInterval(() => window.startTime = new Date().getTime(), 1000);
+window.startTime = 9999999999999999
