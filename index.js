@@ -5,21 +5,35 @@ const runModules = async () => {
    const { focus } = await storge.get('focus');
    const { time } = await storge.get('time');
    const { search } = await storge.get('search');
-   
+
 
    if(focus) {
-   
+
       const script = document.createElement('script');
       script.src = browser.runtime.getURL('modules/focus.js');
       document.head.appendChild(script);
-   
-   } else if(document.location.href.includes('LoadTestStart.html')) {
 
-      setTimeout(() => {
-         document.querySelector('.mdc-button__label').innerHTML = "ROZPOCZNIJ TEST Z WYKRYWANIEM WYJŚCIA ZE STRONY";
-         document.querySelector('#start-form-submit').style.backgroundColor = "#ba0000";
-      }, 1 * 1000);
-      
+   } else if(document.location.href.includes('/exam/LoadTestStart.html') || document.location.href.endsWith(".testportal.pl/")) {
+
+      const startBox = document.querySelector(".button_box");
+      const button = document.querySelector('.mdc-button');
+
+      if(!startBox || !button) return;
+
+      const statusInformation = document.createElement('span');
+      statusInformation.textContent = "Wyłączony antitestportal";
+
+      statusInformation.style = `
+         margin-left: 10px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: gray;
+      `;
+
+      startBox.appendChild(statusInformation);
+      button.style.backgroundColor = "rgba(198,0,0,0.81)";
+
    };
 
    if(time) {
@@ -27,7 +41,7 @@ const runModules = async () => {
       const script = document.createElement('script');
       script.src = browser.runtime.getURL('modules/timer.js');
       document.head.appendChild(script);
-   
+
    };
 
    if(search) {
@@ -37,7 +51,7 @@ const runModules = async () => {
       document.head.appendChild(script);
 
    };
-   
+
 };
 
 try {
