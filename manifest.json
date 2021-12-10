@@ -1,6 +1,6 @@
 {
   "name": "AntiTestportal",
-  "version": "1.1.3",
+  "version": "1.2",
   "manifest_version": 2,
   "content_scripts": [{
     "matches": [
