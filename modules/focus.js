@@ -1,22 +1,19 @@
-try{
+try {
+  const original = RegExp.prototype.test;
+  RegExp.prototype.test = function (s) {
+    const string = this.toString();
 
-	const original = RegExp.prototype.test;
-	RegExp.prototype.test = function (s) {
+    if (string.includes("native code") && string.includes("function")) {
+      return true;
+    }
 
-		const string = this.toString()
+    const r = original.call(this, s);
+    return r;
+  };
 
-		if(string.includes("native code") && string.includes("function")) {
-			return true;
-		};
-		
-		const r = original.call(this, s);
-		return r;
-	};
-
-	document.hasFocus = () => {
-		return true;
-	};
-	
+  document.hasFocus = () => {
+    return true;
+  };
 } catch (e) {
-	alert(e);
-};
+  alert(e);
+}

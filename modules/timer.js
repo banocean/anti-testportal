@@ -1,1 +1,1 @@
-window.startTime = 9999999999999999
+window.startTime = 9999999999999999;

@@ -5,22 +5,26 @@
   "content_scripts": [{
     "matches": [
       "*://*.teams.microsoft.com/*",
-		  "*://*.testportal.net/*",
-			"*://*.testportal.pl/*"
+      "*://*.testportal.net/*",
+      "*://*.testportal.pl/*"
     ],
     "js": ["index.js"],
     "all_frames": true
-  }], 
-  "web_accessible_resources": ["modules/time.js", "modules/focus.js", "modules/search.js"],
-  "browser_action":{
-		"default_title": "AntiTestportal",
-		"default_popup": "popup/index.html"
+  }],
+  "web_accessible_resources": [
+    "modules/time.js",
+    "modules/focus.js",
+    "modules/search.js"
+  ],
+  "browser_action": {
+    "default_title": "AntiTestportal",
+    "default_popup": "popup/index.html"
   },
   "permissions": [
-		"storage"
+    "storage"
   ],
-  "icons": { 
-		"300": "assets/testportal-300.png"
+  "icons": {
+    "300": "assets/testportal-300.png"
   },
   "background": {
     "scripts": ["events/installed.js"]
