@@ -1,6 +1,6 @@
 {
   "name": "AntiTestportal",
-  "version": "1.2",
+  "version": "1.2.1",
   "manifest_version": 2,
   "content_scripts": [{
     "matches": [
@@ -12,7 +12,7 @@
     "all_frames": true
   }],
   "web_accessible_resources": [
-    "modules/time.js",
+    "modules/timer.js",
     "modules/focus.js",
     "modules/search.js"
   ],
