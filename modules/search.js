@@ -18,11 +18,15 @@ questions.childNodes.forEach((e) => {
       }
     });
   } else if (e.tagName === "P") {
+    const searchURL =
+      (localStorage.getItem("searchEngine") ?? "google") === "google"
+        ? "https://www.google.com/search?"
+        : "https://duckduckgo.com/?";
     const searchParams = new URLSearchParams();
     searchParams.append("q", e.textContent);
     e.setAttribute(
       "onclick",
-      `window.open('https://www.google.com/search?${searchParams.toString()}')`,
+      `window.open('${searchURL}${searchParams.toString()}')`,
     );
     e.style["text-decoration-line"] = "underline";
     e.style["font-size"] = "1.3rem";

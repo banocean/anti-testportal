@@ -4,6 +4,9 @@ const runModules = async () => {
   const { focus } = await storge.get("focus");
   const { time } = await storge.get("time");
   const { search } = await storge.get("search");
+  const { searchEngine } = await storge.get("searchEngine");
+
+  localStorage.setItem("searchEngine", searchEngine || "google");
 
   if (focus) {
     const script = document.createElement("script");

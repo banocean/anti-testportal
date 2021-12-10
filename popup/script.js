@@ -9,6 +9,9 @@ const setup = async () => {
 
   const { search } = await storge.get("search");
   document.querySelector(".search").checked = search;
+
+  const { searchEngine } = await storge.get("searchEngine");
+  document.querySelector("#search-engine").value = searchEngine;
 };
 
 setup();
@@ -26,4 +29,9 @@ document.querySelector(".time").onclick = () => {
 document.querySelector(".search").onclick = () => {
   const search = document.querySelector(".search").checked;
   storge.set({ search });
+};
+
+document.querySelector("#search-engine").onchange = () => {
+  const searchEngine = document.querySelector("#search-engine").value;
+  storge.set({ searchEngine });
 };
