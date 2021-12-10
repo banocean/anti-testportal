@@ -2,8 +2,16 @@
    background-color: #202225;
    color: white;
    font-family: sans-serif;
+   height: auto;
+   width: 250px;
+   font-size: 15px;
+   border-radius: 40px;
  }
 
+ html {
+   height: 100px;
+   width: 250px;
+ }
  .discord {
     width: 100%;
     height: 60px;

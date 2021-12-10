@@ -1,21 +1,14 @@
-const storge = browser.storage.local;
+const storge = chrome.storage.local;
 
-const runModules = async () => {
-  const { focus } = await storge.get("focus");
-  const { time } = await storge.get("time");
-  const { search } = await storge.get("search");
-  const { searchEngine } = await storge.get("searchEngine");
+storge.get("focus", ({ focus }) => {
+  if (!focus) {
+    if (
+      !(document.location.href.includes("/exam/LoadTestStart.html") ||
+        document.location.href.endsWith(".testportal.pl/"))
+    ) {
+      return;
+    }
 
-  localStorage.setItem("searchEngine", searchEngine || "google");
-
-  if (focus) {
-    const script = document.createElement("script");
-    script.src = browser.runtime.getURL("modules/focus.js");
-    document.head.appendChild(script);
-  } else if (
-    document.location.href.includes("/exam/LoadTestStart.html") ||
-    document.location.href.endsWith(".testportal.pl/")
-  ) {
     const startBox = document.querySelector(".button_box");
     const button = document.querySelector(".mdc-button");
 
@@ -34,23 +27,33 @@ const runModules = async () => {
 
     startBox.appendChild(statusInformation);
     button.style.backgroundColor = "rgba(198,0,0,0.81)";
+
+    return;
   }
 
-  if (time) {
-    const script = document.createElement("script");
-    script.src = browser.runtime.getURL("modules/timer.js");
-    document.head.appendChild(script);
-  }
+  const script = document.createElement("script");
+  script.src = chrome.runtime.getURL("modules/focus.js");
+  document.head.appendChild(script);
+});
 
-  if (search) {
-    const script = document.createElement("script");
-    script.src = browser.runtime.getURL("modules/search.js");
-    document.head.appendChild(script);
-  }
-};
+storge.get("search", ({ search }) => {
+  if (!search) return;
 
-try {
-  runModules();
-} catch (e) {
-  alert(e);
-}
+  const script = document.createElement("script");
+  script.src = chrome.runtime.getURL("modules/search.js");
+  document.head.appendChild(script);
+});
+
+storge.get("time", ({ time }) => {
+  if (!time) return;
+
+  const script = document.createElement("script");
+  script.src = chrome.runtime.getURL("modules/timer.js");
+  document.head.appendChild(script);
+});
+
+storge.get(
+  "searchEngine",
+  ({ searchEngine }) =>
+    localStorage.setItem("searchEngine", searchEngine || "google"),
+);

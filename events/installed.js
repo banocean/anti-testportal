@@ -1,4 +1,4 @@
-browser.runtime.onInstalled.addListener((e) => {
+chrome.runtime.onInstalled.addListener((e) => {
   if (e.reason !== "install") return;
-  browser.storage.local.set({ focus: true });
+  chrome.storage.local.set({ focus: true });
 });

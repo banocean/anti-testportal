@@ -1,17 +1,23 @@
-const storge = browser.storage.local;
+const storge = chrome.storage.local;
 
 const setup = async () => {
-  const { focus } = await storge.get("focus");
-  document.querySelector(".focus").checked = focus;
-
-  const { time } = await storge.get("time");
-  document.querySelector(".time").checked = time;
-
-  const { search } = await storge.get("search");
-  document.querySelector(".search").checked = search;
-
-  const { searchEngine } = await storge.get("searchEngine");
-  document.querySelector("#search-engine").value = searchEngine;
+  storge.get(
+    "focus",
+    ({ focus }) => document.querySelector(".focus").checked = focus,
+  );
+  storge.get(
+    "time",
+    ({ time }) => document.querySelector(".time").checked = time,
+  );
+  storge.get(
+    "search",
+    ({ search }) => document.querySelector(".search").checked = search,
+  );
+  storge.get(
+    "searchEngine",
+    ({ searchEngine }) =>
+      document.querySelector("#search-engine").value = searchEngine,
+  );
 };
 
 setup();
